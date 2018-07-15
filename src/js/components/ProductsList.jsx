@@ -71,14 +71,14 @@ class ProductsList extends Component {
     switch (this.props.sorting) {
       case ASCENDING:
         return products.sort((a, b) => {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1;
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0;
         });
       case DESCENDING:
         return products.sort((a, b) => {
-          if (a.name < b.name) return 1;
-          if (a.name > b.name) return -1;
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
           return 0;
         });
       default:
