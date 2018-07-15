@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { categoryFilters } from '../redux/actionTypes';
-import { deleteProduct } from '../redux/actionCreators';
+import { deleteProduct, editProduct } from '../redux/actionCreators';
 
 const {
   BAKERY_AND_BREAD,
@@ -48,6 +48,20 @@ class ProductsList extends Component {
     }
   };
 
+  editButtonHandler = (
+    index,
+    oldName,
+    oldCategory,
+    oldPrice,
+    oldDescription
+  ) => {
+    let name = prompt('Enter new product name:', oldName);
+    let category = prompt('Enter new product category:', oldCategory);
+    let price = prompt('Enter new product price:', oldPrice);
+    let description = prompt('Enter new product description:', oldDescription);
+    this.props.editProduct(index, name, category, price, description);
+  };
+
   render() {
     return (
       <div className="products-list">
@@ -66,6 +80,19 @@ class ProductsList extends Component {
                   <dt>Description</dt>
                   <dd>{product.description}</dd>
                 </dl>
+                <button
+                  onClick={() =>
+                    this.editButtonHandler(
+                      index,
+                      product.name,
+                      product.category,
+                      product.price,
+                      product.description
+                    )
+                  }
+                >
+                  Edit
+                </button>
                 <button onClick={() => this.props.deleteProduct(index)}>
                   Delete
                 </button>
@@ -88,6 +115,9 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteProduct: index => {
       dispatch(deleteProduct(index));
+    },
+    editProduct: (index, name, category, price, description) => {
+      dispatch(editProduct(index, name, category, price, description));
     }
   };
 };
