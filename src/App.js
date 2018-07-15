@@ -9,21 +9,35 @@ import { categoryFilters } from './js/redux/actionTypes';
 
 const { BAKERY_AND_BREAD, PASTA_AND_RICE, DRINKS } = categoryFilters;
 
+const makeId = () => {
+  let text = '';
+  let possible =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (let i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+};
+
 const initialState = {
   products: [
     {
+      id: makeId(),
       name: 'Bread',
       category: BAKERY_AND_BREAD,
       price: 2.99,
       description: 'Buy one farm bread'
     },
     {
+      id: makeId(),
       name: 'Spaghetti pasta',
       category: PASTA_AND_RICE,
       price: 3.29,
       description: `Buy 3 packs of spaghetti pasta for tomorrow's dinner`
     },
     {
+      id: makeId(),
       name: 'Coca-Cola',
       category: DRINKS,
       price: 4.79,

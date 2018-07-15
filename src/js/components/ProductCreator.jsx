@@ -26,13 +26,26 @@ class ProductCreator extends Component {
     descriptionValue: String
   };
 
+  makeId = () => {
+    let text = '';
+    let possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  };
+
   submitHandler = event => {
     event.preventDefault();
     let name = this.state.nameValue,
       category = this.state.categoryValue,
       price = this.state.priceValue,
       description = this.state.descriptionValue;
-    this.props.dispatch(addProduct(name, category, price, description));
+    this.props.dispatch(
+      addProduct(this.makeId(), name, category, price, description)
+    );
   };
 
   render() {

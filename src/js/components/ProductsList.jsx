@@ -59,18 +59,12 @@ class ProductsList extends Component {
     }
   };
 
-  editButtonHandler = (
-    index,
-    oldName,
-    oldCategory,
-    oldPrice,
-    oldDescription
-  ) => {
+  editButtonHandler = (id, oldName, oldCategory, oldPrice, oldDescription) => {
     document.querySelector('#edit-name').value = oldName;
     document.querySelector('#edit-category').value = oldCategory;
     document.querySelector('#edit-price').value = oldPrice;
     document.querySelector('#edit-description').value = oldDescription;
-    this.props.changeCurrentlyEditedProduct(index);
+    this.props.changeCurrentlyEditedProduct(id);
   };
 
   defineOrder = products => {
@@ -141,9 +135,7 @@ class ProductsList extends Component {
                           </div>
                           <div className="col-3">
                             <dt>Price</dt>
-                            <dd>
-                              {Number.parseFloat(product.price).toFixed(2)}
-                            </dd>
+                            <dd>{product.price}</dd>
                           </div>
                           <div className="col-3">
                             <dt>Description</dt>
@@ -161,7 +153,7 @@ class ProductsList extends Component {
                               data-target="#exampleModal"
                               onClick={() =>
                                 this.editButtonHandler(
-                                  index,
+                                  product.id,
                                   product.name,
                                   product.category,
                                   product.price,
@@ -173,7 +165,9 @@ class ProductsList extends Component {
                             </button>
                             <button
                               className="btn btn-danger"
-                              onClick={() => this.props.deleteProduct(index)}
+                              onClick={() =>
+                                this.props.deleteProduct(product.id)
+                              }
                             >
                               Delete
                             </button>

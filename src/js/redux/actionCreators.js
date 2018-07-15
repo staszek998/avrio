@@ -10,33 +10,32 @@ import {
   CHANGE_CURRENTLY_EDITED_PRODUCT
 } from './actionTypes';
 
-const addProduct = (name, category, price, description) => {
+const addProduct = (id, name, category, price, description) => {
   return {
     type: ADD_PRODUCT,
+    id,
     name,
-    // photo,
     category,
     price,
     description
   };
 };
 
-const editProduct = (index, name, category, price, description) => {
+const editProduct = (id, name, category, price, description) => {
   return {
     type: EDIT_PRODUCT,
-    index,
+    id,
     name,
-    // photo,
     category,
     price,
     description
   };
 };
 
-const deleteProduct = index => {
+const deleteProduct = id => {
   return {
     type: DELETE_PRODUCT,
-    index
+    id
   };
 };
 
@@ -68,10 +67,10 @@ const changeSorting = sorting => {
   };
 };
 
-const changeCurrentlyEditedProduct = index => {
+const changeCurrentlyEditedProduct = id => {
   return {
     type: CHANGE_CURRENTLY_EDITED_PRODUCT,
-    index
+    id
   };
 };
 

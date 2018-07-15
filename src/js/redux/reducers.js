@@ -24,19 +24,18 @@ const products = (state = [], action) => {
       return [
         ...state,
         {
+          id: action.id,
           name: action.name,
-          //   photo: action.photo,
           category: action.category,
           price: action.price,
           description: action.description
         }
       ];
     case EDIT_PRODUCT:
-      return state.map((product, index) => {
-        if (index === action.index) {
+      return state.map(product => {
+        if (product.id === action.id) {
           return {
             name: action.name,
-            // photo: action.photo,
             category: action.category,
             price: action.price,
             description: action.description
@@ -46,8 +45,8 @@ const products = (state = [], action) => {
         }
       });
     case DELETE_PRODUCT:
-      return state.filter((product, index) => {
-        return index !== action.index;
+      return state.filter(product => {
+        return product.id !== action.id;
       });
     case ADD_COMMENT:
       return state.map((product, index) => {
