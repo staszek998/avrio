@@ -48,6 +48,11 @@ class FilterSelector extends Component {
     }
   };
 
+  buttonDisableClickHandler = event => {
+    event.preventDefault();
+    this.props.dispatch(setFilterMode(DISABLED));
+  };
+
   render() {
     return (
       <form className="row">
@@ -128,7 +133,14 @@ class FilterSelector extends Component {
                   >
                     Apply
                   </button>
-                  <button className="btn btn-warning">Disable</button>
+                  <button
+                    className="btn btn-warning"
+                    onClick={event => {
+                      this.buttonDisableClickHandler(event);
+                    }}
+                  >
+                    Disable
+                  </button>
                 </div>
               </fieldset>
             </div>
