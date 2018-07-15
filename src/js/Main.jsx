@@ -9,8 +9,14 @@ class Main extends Component {
   render() {
     return (
       <div className="main container">
-        <ProductCreator />
-        <FilterSelector />
+        <div className="row">
+          <div className="col-12">
+            <div className="row">
+              <ProductCreator />
+              <FilterSelector />
+            </div>
+          </div>
+        </div>
         <ProductsList />
       </div>
     );

@@ -50,119 +50,114 @@ class FilterSelector extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-12">
-          <div className="card">
-            <div className="card-body">
-              <form className="row">
-                <div className="col-6">
-                  <div className="card">
-                    <div className="card-body">
-                      <fieldset>
-                        <legend>Select your filters</legend>
+      <div className="col-6">
+        <form className="h-100 d-flex flex-column justify-content-between">
+          <div className="row">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-body">
+                  <fieldset>
+                    <legend>Select your filters</legend>
 
-                        <div className="form-group">
-                          <label htmlFor="filter-name">Filter by name: </label>
-                          <input
-                            className="form-control"
-                            type="text"
-                            id="filter-name"
-                            onChange={event => {
-                              this.props.dispatch(
-                                changeNameFilter(event.currentTarget.value)
-                              );
-                            }}
-                          />
-                        </div>
-
-                        <div className="form-group">
-                          <label htmlFor="filter-category">
-                            Filter by category:{' '}
-                          </label>
-                          <select
-                            className="form-control"
-                            id="filter-category"
-                            onChange={event => {
-                              this.props.dispatch(
-                                changeCategoryFilter(event.currentTarget.value)
-                              );
-                            }}
-                          >
-                            <option value={NONE}>-</option>
-                            <option value={BAKERY_AND_BREAD}>
-                              Bakery and bread
-                            </option>
-                            <option value={MEAT_AND_SEAFOOD}>
-                              Meat and seafood
-                            </option>
-                            <option value={PASTA_AND_RICE}>
-                              Pasta and rice
-                            </option>
-                            <option
-                              value={OILS_SAUCES_SALAD_DRESSINGS_AND_CONDIMENTS}
-                            >
-                              Oils, sauces, salad dressings and condiments
-                            </option>
-                            <option value={CEREALS_AND_BREAKFAST_FOODS}>
-                              Cereals and breakfast foods
-                            </option>
-                            <option value={SOUPS_AND_CANNED_GOODS}>
-                              Soups and canned goods
-                            </option>
-                            <option value={FROZEN_FOODS}>Frozen foods</option>
-                            <option value={DAIRY_CHEESE_AND_EGGS}>
-                              Dairy, cheese and eggs
-                            </option>
-                            <option value={SNACKS_AND_CRACKERS}>
-                              Snacks and crackers
-                            </option>
-                            <option value={PRODUCE}>Produce</option>
-                            <option value={DRINKS}>Drinks</option>
-                          </select>
-                        </div>
-
-                        <div className="btn-group">
-                          <button
-                            className="btn btn-success"
-                            onClick={event => {
-                              this.buttonApplyClickHandler(event);
-                            }}
-                          >
-                            Apply
-                          </button>
-                          <button className="btn btn-warning">Disable</button>
-                        </div>
-                      </fieldset>
+                    <div className="form-group">
+                      <label htmlFor="filter-name">Filter by name: </label>
+                      <input
+                        className="form-control"
+                        type="text"
+                        id="filter-name"
+                        onChange={event => {
+                          this.props.dispatch(
+                            changeNameFilter(event.currentTarget.value)
+                          );
+                        }}
+                      />
                     </div>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="card">
-                    <div className="card-body">
-                      <fieldset>
-                        <legend>Sorting</legend>
 
-                        <select
-                          className="form-control"
-                          id="sorting"
-                          onChange={event =>
-                            this.props.dispatch(
-                              changeSorting(event.target.value)
-                            )
-                          }
+                    <div className="form-group">
+                      <label htmlFor="filter-category">
+                        Filter by category:{' '}
+                      </label>
+                      <select
+                        className="form-control"
+                        id="filter-category"
+                        onChange={event => {
+                          this.props.dispatch(
+                            changeCategoryFilter(event.currentTarget.value)
+                          );
+                        }}
+                      >
+                        <option value={NONE}>-</option>
+                        <option value={BAKERY_AND_BREAD}>
+                          Bakery and bread
+                        </option>
+                        <option value={MEAT_AND_SEAFOOD}>
+                          Meat and seafood
+                        </option>
+                        <option value={PASTA_AND_RICE}>Pasta and rice</option>
+                        <option
+                          value={OILS_SAUCES_SALAD_DRESSINGS_AND_CONDIMENTS}
                         >
-                          <option value={DEFAULT}>Default order</option>
-                          <option value={ASCENDING}>Ascending</option>
-                          <option value={DESCENDING}>Descending</option>
-                        </select>
-                      </fieldset>
+                          Oils, sauces, salad dressings and condiments
+                        </option>
+                        <option value={CEREALS_AND_BREAKFAST_FOODS}>
+                          Cereals and breakfast foods
+                        </option>
+                        <option value={SOUPS_AND_CANNED_GOODS}>
+                          Soups and canned goods
+                        </option>
+                        <option value={FROZEN_FOODS}>Frozen foods</option>
+                        <option value={DAIRY_CHEESE_AND_EGGS}>
+                          Dairy, cheese and eggs
+                        </option>
+                        <option value={SNACKS_AND_CRACKERS}>
+                          Snacks and crackers
+                        </option>
+                        <option value={PRODUCE}>Produce</option>
+                        <option value={DRINKS}>Drinks</option>
+                      </select>
                     </div>
-                  </div>
+
+                    <div className="btn-group">
+                      <button
+                        className="btn btn-success"
+                        onClick={event => {
+                          this.buttonApplyClickHandler(event);
+                        }}
+                      >
+                        Apply
+                      </button>
+                      <button className="btn btn-warning">Disable</button>
+                    </div>
+                  </fieldset>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="row">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-body">
+                  <fieldset>
+                    <legend>Sorting</legend>
+
+                    <select
+                      className="form-control"
+                      id="sorting"
+                      onChange={event =>
+                        this.props.dispatch(changeSorting(event.target.value))
+                      }
+                    >
+                      <option value={DEFAULT}>Default order</option>
+                      <option value={ASCENDING}>Ascending</option>
+                      <option value={DESCENDING}>Descending</option>
+                    </select>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     );
   }
