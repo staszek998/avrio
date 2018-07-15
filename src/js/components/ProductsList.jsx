@@ -70,22 +70,22 @@ class ProductsList extends Component {
     this.props.editProduct(index, name, category, price, description);
   };
 
-  defineOrder = () => {
+  defineOrder = products => {
     switch (this.props.sorting) {
       case ASCENDING:
-        return [...this.props.products].sort((a, b) => {
+        return products.sort((a, b) => {
           if (a.name < b.name) return -1;
           if (a.name > b.name) return 1;
           return 0;
         });
       case DESCENDING:
-        return [...this.props.products].sort((a, b) => {
+        return products.sort((a, b) => {
           if (a.name < b.name) return 1;
           if (a.name > b.name) return -1;
           return 0;
         });
       default:
-        return this.props.products;
+        return products;
     }
   };
 
@@ -104,7 +104,7 @@ class ProductsList extends Component {
 
   filterByName = products => {
     return products.filter(product =>
-      product.name.includes(this.props.nameFilter)
+      product.name.toLowerCase().includes(this.props.nameFilter.toLowerCase())
     );
   };
 
@@ -160,7 +160,10 @@ class ProductsList extends Component {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    sorting: state.sorting
+    sorting: state.sorting,
+    filterMode: state.filterMode,
+    nameFilter: state.nameFilter,
+    categoryFilter: state.categoryFilter
   };
 };
 
