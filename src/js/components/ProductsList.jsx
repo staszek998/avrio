@@ -141,7 +141,9 @@ class ProductsList extends Component {
                           </div>
                           <div className="col-3">
                             <dt>Price</dt>
-                            <dd>{product.price}</dd>
+                            <dd>
+                              {Number.parseFloat(product.price).toFixed(2)}
+                            </dd>
                           </div>
                           <div className="col-3">
                             <dt>Description</dt>
