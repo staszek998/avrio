@@ -8,7 +8,7 @@ import FilterSelector from './components/FilterSelector';
 class Main extends Component {
   render() {
     return (
-      <div className="main">
+      <div className="main container">
         <ProductCreator />
         <FilterSelector />
         <ProductsList />

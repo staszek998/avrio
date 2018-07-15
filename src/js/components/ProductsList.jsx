@@ -116,42 +116,55 @@ class ProductsList extends Component {
 
   render() {
     return (
-      <div className="products-list">
-        <h1>Products list</h1>
-        <ul>
-          {this.defineOrder(this.applyFilters()).map((product, index) => {
-            return (
-              <li key={index}>
-                <dl>
-                  <dt>Name</dt>
-                  <dd>{product.name}</dd>
-                  <dt>Category</dt>
-                  <dd>{this.getCategoryString(product.category)}</dd>
-                  <dt>Price</dt>
-                  <dd>{product.price}</dd>
-                  <dt>Description</dt>
-                  <dd>{product.description}</dd>
-                </dl>
-                <button
-                  onClick={() =>
-                    this.editButtonHandler(
-                      index,
-                      product.name,
-                      product.category,
-                      product.price,
-                      product.description
-                    )
-                  }
-                >
-                  Edit
-                </button>
-                <button onClick={() => this.props.deleteProduct(index)}>
-                  Delete
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="row">
+        <div className="col-12">
+          <h1 className="display-1">Products list</h1>
+
+          <div className="products-list">
+            <ul className="list-group">
+              {this.defineOrder(this.applyFilters()).map((product, index) => {
+                return (
+                  <li key={index} className="list-group-item card">
+                    <div className="card-body">
+                      <dl>
+                        <dt>Name</dt>
+                        <dd>{product.name}</dd>
+                        <dt>Category</dt>
+                        <dd>{this.getCategoryString(product.category)}</dd>
+                        <dt>Price</dt>
+                        <dd>{product.price}</dd>
+                        <dt>Description</dt>
+                        <dd>{product.description}</dd>
+                      </dl>
+                      <div className="btn-group">
+                        <button
+                          className="btn btn-info"
+                          onClick={() =>
+                            this.editButtonHandler(
+                              index,
+                              product.name,
+                              product.category,
+                              product.price,
+                              product.description
+                            )
+                          }
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => this.props.deleteProduct(index)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
