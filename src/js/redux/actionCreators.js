@@ -6,7 +6,8 @@ import {
   CHANGE_NAME_FILTER,
   SET_FILTER_MODE,
   CHANGE_SORTING,
-  ADD_COMMENT
+  ADD_COMMENT,
+  CHANGE_CURRENTLY_EDITED_PRODUCT
 } from './actionTypes';
 
 const addProduct = (name, category, price, description) => {
@@ -67,6 +68,13 @@ const changeSorting = sorting => {
   };
 };
 
+const changeCurrentlyEditedProduct = index => {
+  return {
+    type: CHANGE_CURRENTLY_EDITED_PRODUCT,
+    index
+  };
+};
+
 const addComment = (index, comment) => {
   return {
     type: ADD_COMMENT,
@@ -82,5 +90,6 @@ export {
   changeNameFilter,
   setFilterMode,
   changeSorting,
-  addComment
+  addComment,
+  changeCurrentlyEditedProduct
 };

@@ -6,7 +6,10 @@ import {
   filterModes,
   sortingTypes
 } from '../redux/actionTypes';
-import { deleteProduct, editProduct } from '../redux/actionCreators';
+import {
+  deleteProduct,
+  changeCurrentlyEditedProduct
+} from '../redux/actionCreators';
 
 const {
   BAKERY_AND_BREAD,
@@ -63,11 +66,11 @@ class ProductsList extends Component {
     oldPrice,
     oldDescription
   ) => {
-    let name = prompt('Enter new product name:', oldName);
-    let category = prompt('Enter new product category:', oldCategory);
-    let price = prompt('Enter new product price:', oldPrice);
-    let description = prompt('Enter new product description:', oldDescription);
-    this.props.editProduct(index, name, category, price, description);
+    document.querySelector('#edit-name').value = oldName;
+    document.querySelector('#edit-category').value = oldCategory;
+    document.querySelector('#edit-price').value = oldPrice;
+    document.querySelector('#edit-description').value = oldDescription;
+    this.props.changeCurrentlyEditedProduct(index);
   };
 
   defineOrder = products => {
@@ -152,6 +155,8 @@ class ProductsList extends Component {
                           <div className="btn-group">
                             <button
                               className="btn btn-info"
+                              data-toggle="modal"
+                              data-target="#exampleModal"
                               onClick={() =>
                                 this.editButtonHandler(
                                   index,
@@ -200,8 +205,8 @@ const mapDispatchToProps = dispatch => {
     deleteProduct: index => {
       dispatch(deleteProduct(index));
     },
-    editProduct: (index, name, category, price, description) => {
-      dispatch(editProduct(index, name, category, price, description));
+    changeCurrentlyEditedProduct: index => {
+      dispatch(changeCurrentlyEditedProduct(index));
     }
   };
 };

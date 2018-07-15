@@ -10,7 +10,8 @@ import {
   ADD_COMMENT,
   categoryFilters,
   filterModes,
-  sortingTypes
+  sortingTypes,
+  CHANGE_CURRENTLY_EDITED_PRODUCT
 } from './actionTypes';
 
 const { NONE } = categoryFilters,
@@ -100,12 +101,22 @@ const sorting = (state = DEFAULT, action) => {
   }
 };
 
+const currentlyEditedProduct = (state = '', action) => {
+  switch (action.type) {
+    case CHANGE_CURRENTLY_EDITED_PRODUCT:
+      return action.index;
+    default:
+      return state;
+  }
+};
+
 const combinedReducers = combineReducers({
   products,
   categoryFilter,
   nameFilter,
   filterMode,
-  sorting
+  sorting,
+  currentlyEditedProduct
 });
 
 export default combinedReducers;
