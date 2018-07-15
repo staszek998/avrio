@@ -121,7 +121,7 @@ class ProductsList extends Component {
         <ul>
           {this.defineOrder(this.applyFilters()).map((product, index) => {
             return (
-              <li>
+              <li key={index}>
                 <dl>
                   <dt>Name</dt>
                   <dd>{product.name}</dd>
