@@ -79,7 +79,7 @@ const nameFilter = (state = '', action) => {
   }
 };
 
-const sorting = (state = ASCENDING, action) => {
+const sorting = (state = NONE, action) => {
   switch (action.type) {
     case CHANGE_SORTING:
       return action.sorting;

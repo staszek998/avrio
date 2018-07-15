@@ -23,6 +23,7 @@ const categoryFilters = {
 };
 
 const sortingTypes = {
+  NONE: 'NONE',
   ASCENDING: 'ASCENDING',
   DESCENDING: 'DESCENDING'
 };
