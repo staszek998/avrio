@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { categoryFilters, sortingTypes } from '../redux/actionTypes';
+import { changeSorting } from '../redux/actionCreators';
 
 const {
   BAKERY_AND_BREAD,
@@ -60,7 +62,12 @@ class FilterSelector extends Component {
         <fieldset>
           <legend>Sorting</legend>
 
-          <select id="sorting">
+          <select
+            id="sorting"
+            onChange={event =>
+              this.props.dispatch(changeSorting(event.target.value))
+            }
+          >
             <option value={DEFAULT}>Default order</option>
             <option value={ASCENDING}>Ascending</option>
             <option value={DESCENDING}>Descending</option>
@@ -71,4 +78,4 @@ class FilterSelector extends Component {
   }
 }
 
-export default FilterSelector;
+export default connect()(FilterSelector);

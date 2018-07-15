@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { categoryFilters } from '../redux/actionTypes';
+import { categoryFilters, sortingTypes } from '../redux/actionTypes';
 import { deleteProduct, editProduct } from '../redux/actionCreators';
 
 const {
@@ -17,6 +17,8 @@ const {
   PRODUCE,
   DRINKS
 } = categoryFilters;
+
+const { ASCENDING, DESCENDING } = sortingTypes;
 
 class ProductsList extends Component {
   getCategoryString = categoryVariable => {
@@ -62,12 +64,31 @@ class ProductsList extends Component {
     this.props.editProduct(index, name, category, price, description);
   };
 
+  defineOrder = () => {
+    switch (this.props.sorting) {
+      case ASCENDING:
+        return [...this.props.products].sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        });
+      case DESCENDING:
+        return [...this.props.products].sort((a, b) => {
+          if (a.name < b.name) return 1;
+          if (a.name > b.name) return -1;
+          return 0;
+        });
+      default:
+        return this.props.products;
+    }
+  };
+
   render() {
     return (
       <div className="products-list">
         <h1>Products list</h1>
         <ul>
-          {this.props.products.map((product, index) => {
+          {this.defineOrder().map((product, index) => {
             return (
               <li>
                 <dl>
@@ -107,7 +128,8 @@ class ProductsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.products,
+    sorting: state.sorting
   };
 };
 
