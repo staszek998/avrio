@@ -15,7 +15,7 @@ const {
   DAIRY_CHEESE_AND_EGGS,
   SNACKS_AND_CRACKERS,
   PRODUCE,
-  DRINK
+  DRINKS
 } = categoryFilters;
 
 class ProductCreator extends Component {
@@ -93,7 +93,7 @@ class ProductCreator extends Component {
             </option>
             <option value={SNACKS_AND_CRACKERS}>Snacks and crackers</option>
             <option value={PRODUCE}>Produce</option>
-            <option value={DRINK}>Drink</option>
+            <option value={DRINKS}>Drinks</option>
           </select>
           <br />
 
