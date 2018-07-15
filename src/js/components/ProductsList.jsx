@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { categoryFilters } from '../redux/actionTypes';
-import { Object } from 'core-js';
+import { deleteProduct } from '../redux/actionCreators';
 
 const {
   BAKERY_AND_BREAD,
@@ -53,7 +53,7 @@ class ProductsList extends Component {
       <div className="products-list">
         <h1>Products list</h1>
         <ul>
-          {this.props.products.map(product => {
+          {this.props.products.map((product, index) => {
             return (
               <li>
                 <dl>
@@ -66,6 +66,9 @@ class ProductsList extends Component {
                   <dt>Description</dt>
                   <dd>{product.description}</dd>
                 </dl>
+                <button onClick={() => this.props.deleteProduct(index)}>
+                  Delete
+                </button>
               </li>
             );
           })}
@@ -81,4 +84,15 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ProductsList);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteProduct: index => {
+      dispatch(deleteProduct(index));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductsList);
