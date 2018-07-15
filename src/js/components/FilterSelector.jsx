@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { categoryFilters, sortingTypes } from '../redux/actionTypes';
-import { changeSorting } from '../redux/actionCreators';
+import {
+  categoryFilters,
+  filterModes,
+  sortingTypes
+} from '../redux/actionTypes';
+import {
+  changeCategoryFilter,
+  changeNameFilter,
+  setFilterMode,
+  changeSorting
+} from '../redux/actionCreators';
 
 const {
   NONE,
@@ -20,8 +29,25 @@ const {
 } = categoryFilters;
 
 const { DEFAULT, ASCENDING, DESCENDING } = sortingTypes;
+const { DISABLED, NAME, CATEGORY, BOTH } = filterModes;
 
 class FilterSelector extends Component {
+  buttonApplyClickHandler = event => {
+    event.preventDefault();
+    if (
+      document.querySelector('#filter-name').value !== '' &&
+      document.querySelector('#filter-category').value !== NONE
+    ) {
+      this.props.dispatch(setFilterMode(BOTH));
+    } else if (document.querySelector('#filter-name').value !== '') {
+      this.props.dispatch(setFilterMode(NAME));
+    } else if (document.querySelector('#filter-category').value !== NONE) {
+      this.props.dispatch(setFilterMode(CATEGORY));
+    } else {
+      this.props.dispatch(setFilterMode(DISABLED));
+    }
+  };
+
   render() {
     return (
       <form>
@@ -29,11 +55,24 @@ class FilterSelector extends Component {
           <legend>Select your filters</legend>
 
           <label htmlFor="filter-name">Filter by name: </label>
-          <input type="text" id="filter-name" />
+          <input
+            type="text"
+            id="filter-name"
+            onChange={event => {
+              this.props.dispatch(changeNameFilter(event.currentTarget.value));
+            }}
+          />
           <br />
 
           <label htmlFor="filter-category">Filter by category: </label>
-          <select id="filter-category">
+          <select
+            id="filter-category"
+            onChange={event => {
+              this.props.dispatch(
+                changeCategoryFilter(event.currentTarget.value)
+              );
+            }}
+          >
             <option value={NONE}>-</option>
             <option value={BAKERY_AND_BREAD}>Bakery and bread</option>
             <option value={MEAT_AND_SEAFOOD}>Meat and seafood</option>
@@ -57,7 +96,13 @@ class FilterSelector extends Component {
           </select>
           <br />
 
-          <button>Apply</button>
+          <button
+            onClick={event => {
+              this.buttonApplyClickHandler(event);
+            }}
+          >
+            Apply
+          </button>
           <button>Disable</button>
         </fieldset>
 
