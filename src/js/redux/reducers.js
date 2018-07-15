@@ -12,7 +12,7 @@ import {
 } from './actionTypes';
 
 const { NONE } = categoryFilters,
-  { ASCENDING } = sortingTypes;
+  { DEFAULT } = sortingTypes;
 
 const products = (state = [], action) => {
   switch (action.type) {
@@ -79,7 +79,7 @@ const nameFilter = (state = '', action) => {
   }
 };
 
-const sorting = (state = NONE, action) => {
+const sorting = (state = DEFAULT, action) => {
   switch (action.type) {
     case CHANGE_SORTING:
       return action.sorting;
