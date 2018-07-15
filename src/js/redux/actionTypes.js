@@ -7,6 +7,7 @@ const ADD_PRODUCT = 'ADD_PRODUCT',
   ADD_COMMENT = 'ADD_COMMENT';
 
 const categoryFilters = {
+  NONE: 'NONE',
   BAKERY_AND_BREAD: 'BAKERY_AND_BREAD',
   MEAT_AND_SEAFOOD: 'MEAT_AND_SEAFOOD',
   PASTA_AND_RICE: 'PASTA_AND_RICE',
@@ -21,6 +22,11 @@ const categoryFilters = {
   DRINKS: 'DRINKS'
 };
 
+const sortingTypes = {
+  ASCENDING: 'ASCENDING',
+  DESCENDING: 'DESCENDING'
+};
+
 export {
   ADD_PRODUCT,
   EDIT_PRODUCT,
@@ -29,5 +35,6 @@ export {
   CHANGE_NAME_FILTER,
   CHANGE_SORTING,
   ADD_COMMENT,
-  categoryFilters
+  categoryFilters,
+  sortingTypes
 };

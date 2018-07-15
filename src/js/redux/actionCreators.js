@@ -8,25 +8,25 @@ import {
   ADD_COMMENT
 } from './actionTypes';
 
-const addProduct = (name, photo, category, prices, description) => {
+const addProduct = (name, photo, category, price, description) => {
   return {
     type: ADD_PRODUCT,
     name,
     photo,
     category,
-    prices,
+    price,
     description
   };
 };
 
-const editProduct = (index, name, photo, category, prices, description) => {
+const editProduct = (index, name, photo, category, price, description) => {
   return {
     type: EDIT_PRODUCT,
     index,
     name,
     photo,
     category,
-    prices,
+    price,
     description
   };
 };
