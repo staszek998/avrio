@@ -118,7 +118,7 @@ class ProductsList extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <h1 className="display-1">Products list</h1>
+          <h1 className="display-1 mt-5">Products list</h1>
 
           <div className="products-list">
             <ul className="list-group">
@@ -127,36 +127,51 @@ class ProductsList extends Component {
                   <li key={index} className="list-group-item card">
                     <div className="card-body">
                       <dl>
-                        <dt>Name</dt>
-                        <dd>{product.name}</dd>
-                        <dt>Category</dt>
-                        <dd>{this.getCategoryString(product.category)}</dd>
-                        <dt>Price</dt>
-                        <dd>{product.price}</dd>
-                        <dt>Description</dt>
-                        <dd>{product.description}</dd>
+                        <div className="row">
+                          <div className="col-3">
+                            <dt>Name</dt>
+                            <dd>{product.name}</dd>
+                          </div>
+                          <div className="col-3">
+                            <dt>Category</dt>
+                            <dd>{this.getCategoryString(product.category)}</dd>
+                          </div>
+                          <div className="col-3">
+                            <dt>Price</dt>
+                            <dd>{product.price}</dd>
+                          </div>
+                          <div className="col-3">
+                            <dt>Description</dt>
+                            <dd>{product.description}</dd>
+                          </div>
+                        </div>
                       </dl>
-                      <div className="btn-group">
-                        <button
-                          className="btn btn-info"
-                          onClick={() =>
-                            this.editButtonHandler(
-                              index,
-                              product.name,
-                              product.category,
-                              product.price,
-                              product.description
-                            )
-                          }
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => this.props.deleteProduct(index)}
-                        >
-                          Delete
-                        </button>
+
+                      <div className="row">
+                        <div className="col-12">
+                          <div className="btn-group">
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>
+                                this.editButtonHandler(
+                                  index,
+                                  product.name,
+                                  product.category,
+                                  product.price,
+                                  product.description
+                                )
+                              }
+                            >
+                              Edit
+                            </button>
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => this.props.deleteProduct(index)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </li>
