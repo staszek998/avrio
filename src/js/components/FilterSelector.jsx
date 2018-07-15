@@ -50,15 +50,15 @@ class FilterSelector extends Component {
 
   render() {
     return (
-      <div className="col-6">
-        <form className="h-100 d-flex flex-column justify-content-between">
-          <div className="row">
-            <div className="col-12">
-              <div className="card">
-                <div className="card-body">
-                  <fieldset>
-                    <legend>Select your filters</legend>
+      <form className="row">
+        <div className="col-8">
+          <div className="card">
+            <div className="card-body">
+              <fieldset>
+                <legend>Select your filters</legend>
 
+                <div className="row">
+                  <div className="col-12 d-flex flex-row justify-content-between">
                     <div className="form-group">
                       <label htmlFor="filter-name">Filter by name: </label>
                       <input
@@ -116,49 +116,48 @@ class FilterSelector extends Component {
                         <option value={DRINKS}>Drinks</option>
                       </select>
                     </div>
-
-                    <div className="btn-group">
-                      <button
-                        className="btn btn-success"
-                        onClick={event => {
-                          this.buttonApplyClickHandler(event);
-                        }}
-                      >
-                        Apply
-                      </button>
-                      <button className="btn btn-warning">Disable</button>
-                    </div>
-                  </fieldset>
+                  </div>
                 </div>
-              </div>
+
+                <div className="btn-group">
+                  <button
+                    className="btn btn-success"
+                    onClick={event => {
+                      this.buttonApplyClickHandler(event);
+                    }}
+                  >
+                    Apply
+                  </button>
+                  <button className="btn btn-warning">Disable</button>
+                </div>
+              </fieldset>
             </div>
           </div>
+        </div>
 
-          <div className="row">
-            <div className="col-12">
-              <div className="card">
-                <div className="card-body">
-                  <fieldset>
-                    <legend>Sorting</legend>
+        <div className="col-4">
+          <div className="card h-100">
+            <div className="card-body">
+              <fieldset>
+                <legend>Sorting</legend>
 
-                    <select
-                      className="form-control"
-                      id="sorting"
-                      onChange={event =>
-                        this.props.dispatch(changeSorting(event.target.value))
-                      }
-                    >
-                      <option value={DEFAULT}>Default order</option>
-                      <option value={ASCENDING}>Ascending</option>
-                      <option value={DESCENDING}>Descending</option>
-                    </select>
-                  </fieldset>
-                </div>
-              </div>
+                <label htmlFor="sorting">Select your preferred order:</label>
+                <select
+                  className="form-control"
+                  id="sorting"
+                  onChange={event =>
+                    this.props.dispatch(changeSorting(event.target.value))
+                  }
+                >
+                  <option value={DEFAULT}>Default order</option>
+                  <option value={ASCENDING}>Ascending</option>
+                  <option value={DESCENDING}>Descending</option>
+                </select>
+              </fieldset>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }

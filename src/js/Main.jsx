@@ -9,15 +9,9 @@ class Main extends Component {
   render() {
     return (
       <div className="main container py-3">
-        <div className="row">
-          <div className="col-12">
-            <div className="row">
-              <ProductCreator />
-              <FilterSelector />
-            </div>
-          </div>
-        </div>
+        <FilterSelector />
         <ProductsList />
+        <ProductCreator />
       </div>
     );
   }
