@@ -8,23 +8,23 @@ import {
   ADD_COMMENT
 } from './actionTypes';
 
-const addProduct = (name, photo, category, price, description) => {
+const addProduct = (name, category, price, description) => {
   return {
     type: ADD_PRODUCT,
     name,
-    photo,
+    // photo,
     category,
     price,
     description
   };
 };
 
-const editProduct = (index, name, photo, category, price, description) => {
+const editProduct = (index, name, category, price, description) => {
   return {
     type: EDIT_PRODUCT,
     index,
     name,
-    photo,
+    // photo,
     category,
     price,
     description

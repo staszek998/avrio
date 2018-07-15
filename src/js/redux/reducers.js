@@ -21,7 +21,7 @@ const products = (state = [], action) => {
         ...state,
         {
           name: action.name,
-          photo: action.photo,
+          //   photo: action.photo,
           category: action.category,
           price: action.price,
           description: action.description
@@ -32,7 +32,7 @@ const products = (state = [], action) => {
         if (index === action.index) {
           return {
             name: action.name,
-            photo: action.photo,
+            // photo: action.photo,
             category: action.category,
             price: action.price,
             description: action.description
