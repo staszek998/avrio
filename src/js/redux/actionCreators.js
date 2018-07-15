@@ -4,6 +4,7 @@ import {
   DELETE_PRODUCT,
   CHANGE_CATEGORY_FILTER,
   CHANGE_NAME_FILTER,
+  SET_FILTER_MODE,
   CHANGE_SORTING,
   ADD_COMMENT
 } from './actionTypes';
@@ -52,6 +53,13 @@ const changeNameFilter = filter => {
   };
 };
 
+const setFilterMode = mode => {
+  return {
+    type: SET_FILTER_MODE,
+    mode
+  };
+};
+
 const changeSorting = sorting => {
   return {
     type: CHANGE_SORTING,
@@ -72,6 +80,7 @@ export {
   deleteProduct,
   changeCategoryFilter,
   changeNameFilter,
+  setFilterMode,
   changeSorting,
   addComment
 };

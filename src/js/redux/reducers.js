@@ -5,14 +5,17 @@ import {
   DELETE_PRODUCT,
   CHANGE_CATEGORY_FILTER,
   CHANGE_NAME_FILTER,
+  SET_FILTER_MODE,
   CHANGE_SORTING,
   ADD_COMMENT,
   categoryFilters,
+  filterModes,
   sortingTypes
 } from './actionTypes';
 
 const { NONE } = categoryFilters,
-  { DEFAULT } = sortingTypes;
+  { DEFAULT } = sortingTypes,
+  { DISABLED } = filterModes;
 
 const products = (state = [], action) => {
   switch (action.type) {
@@ -79,6 +82,15 @@ const nameFilter = (state = '', action) => {
   }
 };
 
+const filterMode = (state = DISABLED, action) => {
+  switch (action.type) {
+    case SET_FILTER_MODE:
+      return action.mode;
+    default:
+      return state;
+  }
+};
+
 const sorting = (state = DEFAULT, action) => {
   switch (action.type) {
     case CHANGE_SORTING:
@@ -92,6 +104,7 @@ const combinedReducers = combineReducers({
   products,
   categoryFilter,
   nameFilter,
+  filterMode,
   sorting
 });
 

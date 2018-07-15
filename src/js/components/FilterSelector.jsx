@@ -5,6 +5,7 @@ import { categoryFilters, sortingTypes } from '../redux/actionTypes';
 import { changeSorting } from '../redux/actionCreators';
 
 const {
+  NONE,
   BAKERY_AND_BREAD,
   MEAT_AND_SEAFOOD,
   PASTA_AND_RICE,
@@ -33,6 +34,7 @@ class FilterSelector extends Component {
 
           <label htmlFor="filter-category">Filter by category: </label>
           <select id="filter-category">
+            <option value={NONE}>-</option>
             <option value={BAKERY_AND_BREAD}>Bakery and bread</option>
             <option value={MEAT_AND_SEAFOOD}>Meat and seafood</option>
             <option value={PASTA_AND_RICE}>Pasta and rice</option>
