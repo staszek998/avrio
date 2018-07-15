@@ -125,19 +125,19 @@ class ProductsList extends Component {
                     <div className="card-body">
                       <dl>
                         <div className="row">
-                          <div className="col-3">
+                          <div className="col-12 col-md-3">
                             <dt>Name</dt>
                             <dd>{product.name}</dd>
                           </div>
-                          <div className="col-3">
+                          <div className="col-12 col-md-3">
                             <dt>Category</dt>
                             <dd>{this.getCategoryString(product.category)}</dd>
                           </div>
-                          <div className="col-3">
+                          <div className="col-12 col-md-3">
                             <dt>Price</dt>
                             <dd>{product.price}</dd>
                           </div>
-                          <div className="col-3">
+                          <div className="col-12 col-md-3">
                             <dt>Description</dt>
                             <dd>{product.description}</dd>
                           </div>
@@ -198,11 +198,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteProduct: index => {
-      dispatch(deleteProduct(index));
+    deleteProduct: id => {
+      dispatch(deleteProduct(id));
     },
-    changeCurrentlyEditedProduct: index => {
-      dispatch(changeCurrentlyEditedProduct(index));
+    changeCurrentlyEditedProduct: id => {
+      dispatch(changeCurrentlyEditedProduct(id));
     }
   };
 };

@@ -59,7 +59,7 @@ class ProductCreator extends Component {
                   <legend>Add new product</legend>
 
                   <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <div className="form-group">
                         <label htmlFor="name">Name: </label>
                         <input
@@ -74,7 +74,7 @@ class ProductCreator extends Component {
                         />
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6">
                       <div className="form-group">
                         <label htmlFor="category">Category: </label>
                         <select
@@ -118,7 +118,7 @@ class ProductCreator extends Component {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-4">
+                    <div className="col-12 col-md-4">
                       <div className="form-group">
                         <label htmlFor="price">Price: </label>
                         <input
@@ -135,7 +135,7 @@ class ProductCreator extends Component {
                         />
                       </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-12 col-md-4">
                       <div className="form-group">
                         <label htmlFor="description">Description: </label>
                         <input
@@ -150,7 +150,7 @@ class ProductCreator extends Component {
                         />
                       </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-12 col-md-4">
                       <div className="form-group">
                         <label className="invisible" htmlFor="add-product">
                           x

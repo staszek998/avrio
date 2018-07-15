@@ -7,7 +7,6 @@ import {
   CHANGE_NAME_FILTER,
   SET_FILTER_MODE,
   CHANGE_SORTING,
-  ADD_COMMENT,
   categoryFilters,
   filterModes,
   sortingTypes,
@@ -47,17 +46,6 @@ const products = (state = [], action) => {
     case DELETE_PRODUCT:
       return state.filter(product => {
         return product.id !== action.id;
-      });
-    case ADD_COMMENT:
-      return state.map((product, index) => {
-        if (index === action.index) {
-          return {
-            ...product,
-            comment: action.comment
-          };
-        } else {
-          return product;
-        }
       });
     default:
       return state;
@@ -103,7 +91,7 @@ const sorting = (state = DEFAULT, action) => {
 const currentlyEditedProduct = (state = '', action) => {
   switch (action.type) {
     case CHANGE_CURRENTLY_EDITED_PRODUCT:
-      return action.index;
+      return action.id;
     default:
       return state;
   }
